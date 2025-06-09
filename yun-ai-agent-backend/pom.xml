@@ -71,6 +71,13 @@
             <version>5.6.2</version>
         </dependency>
 
+        <!-- 引入spring-ai-markdown-document-reader 支持markdown文件解析 https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-markdown-document-reader -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-markdown-document-reader</artifactId>
+            <version>1.0.0-M6</version>
+        </dependency>
+
         <!-- 引入hutool工具包 https://doc.hutool.cn/pages/index/#%F0%9F%8D%8Amaven-->
         <dependency>
             <groupId>cn.hutool</groupId>

@@ -1,4 +1,4 @@
-package com.thefang.yunaiagent.app;
+package com.thefang.yunaiagent.advisor;
 
 import org.springframework.ai.chat.client.advisor.api.*;
 import reactor.core.publisher.Flux;
