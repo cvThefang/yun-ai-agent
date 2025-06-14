@@ -3,6 +3,17 @@ spring:
     name: yun-ai-agent
   profiles:
     active: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/yun_ai_agent
+    username: postgres
+    password: 123456
+  ai:
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
 server:
   port: 8492
   servlet:

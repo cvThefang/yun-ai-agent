@@ -21,11 +21,22 @@ public class LoveAppVectorStoreConfig {
     @Resource
     private LoveAppDocumentLoader loveAppDocumentLoader;
 
+    @Resource
+    private MyTokenTextSplitter  myTokenTextSplitter;
+
+    @Resource
+    private MyKeywordEnricher  myKeywordEnricher;
+
     @Bean
     VectorStore loveAppVectorStore(EmbeddingModel embeddingModel) {
         SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
+        // 加载markdown文档
         List<Document> documentList = loveAppDocumentLoader.loadMarkdowns();
-        simpleVectorStore.doAdd(documentList);
+        // 自定义分词器分词 自主切分文档 这边不建议使用自定义的分词器 推荐使用云平台的分词器更为准确、灵活
+//        List<Document> splitDocuments = myTokenTextSplitter.splitCustomized(documentList);
+        // 自动补充关键词元信息
+        List<Document> enrichDocuments = myKeywordEnricher.enrichDocuments(documentList);
+        simpleVectorStore.doAdd(enrichDocuments);
         return simpleVectorStore;
     }
 }
