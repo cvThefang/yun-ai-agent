@@ -1,0 +1,61 @@
+package com.thefang.yunaiagent.tools;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * @Description
+ * @Author Thefang
+ * @Create 2025/6/14
+ */
+@SpringBootTest
+class FileOperationToolTest {
+
+    @Test
+    void readFile() {
+        FileOperationTool fileOperationTool = new FileOperationTool();
+        String fileName = "如何成为一名优秀的厨师.txt";
+        String result = fileOperationTool.readFile(fileName);
+        Assertions.assertNotNull(result);
+    }
+
+    @Test
+    void writeFile() {
+        FileOperationTool fileOperationTool = new FileOperationTool();
+        String fileName = "如何成为一名优秀的厨师.txt";
+        String content = "成为一名优秀的厨师需要技术、创意、耐心和持续学习的结合。以下是一些关键步骤和建议，帮助你在这个充满挑战又充满成就感的职业中脱颖而出：\n" +
+                "1. 打好基础：掌握核心技能\n" +
+                "专业学习：可以选择正规的烹饪学校（如新东方、蓝带学院等）系统学习理论和技术，或从基层学徒做起积累经验。\n" +
+                "重点掌握：刀工、火候、调味、食材处理、食品安全等基础技能。\n" +
+                "学习经典菜系（如中餐的八大菜系、西餐的法餐/意餐等）和烹饪原理。\n" +
+                "练习基本功：比如切丝均匀、熬汤清澈、炒菜火候精准等，反复练习直到形成肌肉记忆。\n" +
+                "2. 积累实战经验\n" +
+                "从基层做起：在餐厅从帮厨、打荷开始，观察主厨的工作流程，学习厨房管理和团队协作。\n" +
+                "适应高强度工作：厨师行业节奏快、压力大，需具备体力和抗压能力。\n" +
+                "多样化经历：尝试不同岗位（冷盘、热菜、面点等）或不同类型的餐厅（高端酒店、街头小吃、私房菜等），拓宽视野。\n" +
+                "3. 培养职业素养\n" +
+                "注重细节：从摆盘到调味，每一处细节都可能影响菜品品质。优秀的厨师对食材新鲜度、烹饪时间等极其敏感。\n" +
+                "团队合作：厨房是高度协作的环境，沟通效率、责任划分和互相支持至关重要。\n" +
+                "卫生与安全：严格遵守食品安全规范，保持操作台和工具的清洁，避免交叉污染。\n" +
+                "4. 提升创造力与审美\n" +
+                "创新思维：在传统菜式中融入新元素（如分子料理、融合菜），但需平衡创意与大众接受度。\n" +
+                "关注餐饮趋势，学习摆盘艺术和色彩搭配。\n" +
+                "建立个人风格：通过旅行、品尝他人作品、研究食材特性，找到自己的独特表达方式。\n" +
+                "5. 持续学习与精进\n" +
+                "向行业标杆学习：研究名厨的菜谱（如Gordon Ramsay、江振诚等），参加行业比赛或交流活动。\n" +
+                "订阅专业杂志（如《厨界》）、关注美食纪录片（如《主厨的餐桌》）。\n" +
+                "跨界知识：学习营养学、食品科学、餐饮管理，甚至心理学（了解顾客需求）。\n" +
+                "6. 职业发展建议\n" +
+                "考取证书：如中式烹调师、西式面点师等职业资格证，或国际认证（如WACS世界厨师协会）。\n" +
+                "人脉与口碑：通过优质作品和职业态度积累行业资源，未来可向主厨、餐饮顾问或创业者方向发展。\n" +
+                "保持热情：厨师是“用食物传递幸福”的职业，热爱和坚持是应对挑战的核心动力。\n" +
+                "名言启发\n" +
+                "法国名厨奥古斯特·埃科菲曾说：“好的厨师是严格的艺术家，也是慷慨的仆人。” ——既要追求极致的专业，也要服务于食客的体验。\n" +
+                "无论你选择传统路线还是创新路径，记住：“味道”是厨师的终极语言。每一次下厨，都是技术与心意的融合。坚持下去，你的努力终会变成他人盘中的惊喜。\n";
+        String result = fileOperationTool.writeFile(fileName,content);
+        Assertions.assertNotNull(result);
+    }
+}
