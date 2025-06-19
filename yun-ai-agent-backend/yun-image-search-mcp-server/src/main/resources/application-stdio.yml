@@ -1,0 +1,15 @@
+spring:
+  ai:
+    mcp:
+      server:
+        name: yu-image-search-mcp-server
+        version: 0.0.1
+        type: SYNC
+        # stdio
+        stdio: true
+  # stdio
+  main:
+    #\u8FD9\u4E2A\u914D\u7F6E\u6587\u4EF6\u662F\u4F7F\u7528\u7684 stdio \u6A21\u5F0F \u6240\u4EE5\u4E0D\u9700\u8981 web \u5BB9\u5668
+    web-application-type: none
+    # \u5173\u95ED\u4E0D\u5FC5\u8981\u7684 banner \u4FE1\u606F\u8F93\u51FA\uFF08\u5E72\u6270\u9879\u76EE\u8F93\u51FA\uFF09
+    banner-mode: off

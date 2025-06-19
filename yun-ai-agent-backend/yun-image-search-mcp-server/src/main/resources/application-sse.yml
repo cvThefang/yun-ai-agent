@@ -1,0 +1,9 @@
+spring:
+  ai:
+    mcp:
+      server:
+        name: yu-image-search-mcp-server
+        version: 0.0.1
+        type: SYNC
+        # 配置 sse 模式 关闭 stdio 本地
+        stdio: false

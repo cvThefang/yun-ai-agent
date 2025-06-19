@@ -14,6 +14,7 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.tool.ToolCallback;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Component;
 
@@ -183,6 +184,39 @@ public class LoveApp {
                 // 开启日志，便于观察效果
 //                .advisors(new MyLoggerAdvisor())
                 .tools(allTools)
+                .call()
+                .chatResponse();
+        String content = response.getResult().getOutput().getText();
+        log.info("content: {}", content);
+        return content;
+    }
+
+    /**
+     * Spring AI MCP 服务在启动的时候会自动读取 mcp-servers.json配置文件，从中找到所有的工具，
+     * 自动注册到 ToolCallbackProvider工具提供者类中，就可以直接使用 MCP 服务
+     * <p>
+     * mcp其实就是工具调用，Spring AI 并没有单独开发一套 MCP服务的调用机制，
+     * 而是将 MCP 中的工具提取出来，通过 Spring AI 的 ChatClient 客户端进行调用（tools 方法）。
+     */
+    @Resource
+    private ToolCallbackProvider toolCallbackProvider;
+
+    /**
+     * AI 调用 MCP 工具能力接口（使用 ToolCallbackProvider 接口）
+     *
+     * @param message 用户输入的消息
+     * @param chatId  对话的唯一标识：相当于一个房间一个对话id
+     * @return 对话的回复
+     */
+    public String doChatWithMcp(String message, String chatId) {
+        ChatResponse response = chatClient
+                .prompt()
+                .user(message)
+                .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId)
+                        .param(CHAT_MEMORY_RETRIEVE_SIZE_KEY, 10))
+                // 开启日志，便于观察效果
+//                .advisors(new MyLoggerAdvisor())
+                .tools(toolCallbackProvider)
                 .call()
                 .chatResponse();
         String content = response.getResult().getOutput().getText();

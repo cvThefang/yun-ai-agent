@@ -101,6 +101,13 @@
             <version>1.0.0-M6</version>
         </dependency>
 
+        <!-- Spring AI MCP Client -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-mcp-client-spring-boot-starter</artifactId>
+            <version>1.0.0-M6</version>
+        </dependency>
+
         <!-- 引入hutool工具包 https://doc.hutool.cn/pages/index/#%F0%9F%8D%8Amaven-->
         <dependency>
             <groupId>cn.hutool</groupId>
