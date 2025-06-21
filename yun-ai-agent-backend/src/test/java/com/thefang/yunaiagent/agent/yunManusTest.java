@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * @Description
  * @Author Thefang
@@ -16,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class yunManusTest {
 
     @Resource
-    private yunManus yunManus;
+    private YunManus yunManus;
 
     @Test
     void run() {

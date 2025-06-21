@@ -10,9 +10,9 @@ import org.springframework.ai.tool.ToolCallback;
  * @Author Thefang
  * @Create 2025/6/19
  */
-public class yunManus extends ToolCallAgent {
+public class YunManus extends ToolCallAgent {
 
-    public yunManus(ToolCallback[] allTools, ChatModel dashscopeChatModel) {
+    public YunManus(ToolCallback[] allTools, ChatModel dashscopeChatModel) {
         super(allTools);
         this.setName("yunManus");
         String SYSTEM_PROMPT = """  

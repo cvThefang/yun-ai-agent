@@ -8,24 +8,33 @@ spring:
     username: postgres
     password: 123456
   ai:
-    vectorstore:
-      pgvector:
-        index-type: HNSW
-        dimensions: 1536
-        distance-type: COSINE_DISTANCE
-        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
-    mcp:
-      client:
+    dashscope:
+      api-key: your-api-key
+      chat:
+        options:
+          model: qwen-plus
+
+# 向量数据库配置
+#    vectorstore:
+#      pgvector:
+#        index-type: HNSW
+#        dimensions: 1536
+#        distance-type: COSINE_DISTANCE
+#        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+
+#MCP 配置 临时注释方便部署
+#    mcp:
+#      client:
         # mcp client type, support: stdio, sse
         # type: stdio
 #        stdio:
 #          servers-configuration: classpath:mcp-servers.json
         # type: sse
-        sse:
-          connections:
-            # 可以配置多个连接
-            server1:
-              url: http://localhost:8127
+#        sse:
+#          connections:
+#            # 可以配置多个连接
+#            server1:
+#              url: http://localhost:8127
 server:
   port: 8492
   servlet:
